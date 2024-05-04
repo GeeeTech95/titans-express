@@ -212,7 +212,7 @@ STATICFILES_DIRS = [
 os.path.join(BASE_DIR,"static")
 ]
 
-SITE_NAME = "FX Cargoose"
+SITE_NAME = "Titan Express"
 
 STATIC_ROOT = os.path.join(BASE_DIR,"asset")
 

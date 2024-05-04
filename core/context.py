@@ -8,11 +8,11 @@ def core(request) :
     ctx = {}
 
     ctx['liquidity'] = 53199180
-    ctx['site_name_verbose'] = "FX Cargoose"
-    ctx['site_name'] = "FX Cargoose"
-    ctx['site_name_full'] = "FX Cargoose"
-    ctx['support_email'] = "support@fxcargoose.com"
-    ctx['site_email'] = "support@fxcargoose.com"
+    ctx['site_name_verbose'] = "Titan Express"
+    ctx['site_name'] = "Titan Express"
+    ctx['site_name_full'] = "Titan Express"
+    ctx['support_email'] = "support@titansexpress.com"
+    ctx['site_email'] = "support@titansexpress.com"
     ctx['site_phone'] = "+3594858322"
     ctx['site_whatsapp_no'] = "+65156586566"
     ctx['site_address'] = "No 23 winston road new york"
