@@ -184,11 +184,11 @@ EMAIL_HOST  = "smtp.zoho.com"
 EMAIL_HOST_USER_TRANSACTION = "alert@fxcargoose.com"
 EMAIL_HOST_USER_ALERT = "alert@fxcargoose.com"
 EMAIL_HOST_USER_SUPPORT = "support@fxcargoose.com"
-PASSWORD = "iWH2pN86#fsD&Ha"
+PASSWORD = "!@pdt7gu123!!X"
 
 #TAWKTO
 EMAIL = "kennedyzhang7@gmail.com"
-PASSWORD = "iWH2pN86#fsD&Ha" 
+PASSWORD = "!@pdt7gu123!!X" 
 
 
 # Internationalization
