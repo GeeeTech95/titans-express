@@ -44,22 +44,25 @@ LOGGING = {
 
 JAZZMIN_SETTINGS = {
     # title of the window (Will default to current_admin_site.site_title if absent or None)
-    "site_title": "Global Logistics Admin",
+    "site_title": "Titans Express Admin",
 
     # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
-    "site_header": "Global Logistics",
+    "site_header": "Titans Express",
 
     # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
-    "site_brand": "Global Logistics",
+    "site_brand": "Titans Express",
 
     # Logo to use for your site, must be present in static files, used for brand on top left
     "site_logo": "",
 
     # Logo to use for your site, must be present in static files, used for login form logo (defaults to site_logo)
-    "login_logo": "",
+    "login_logo": "main/img/logo-jazz.png",
 
     # Logo to use for login form in dark themes (defaults to login_logo)
-    "login_logo_dark": "",
+    "login_logo_dark": "main/img/logo-jazz.png",
+
+    # CSS classes that are applied to the logo above
+    "site_logo_classes": "logo",
 
     # CSS classes that are applied to the logo above
     "site_logo_classes": "logo",
@@ -73,7 +76,7 @@ JAZZMIN_SETTINGS = {
     "welcome_sign": "Welcome Admin!",
 
     # Copyright on the footer
-    "copyright": "Offshore-Pro",
+    "copyright": "Titans Express",
 }
 
 
@@ -114,6 +117,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'cargo.urls'
+
+DEFAULT_AUTO_FIELD='django.db.models.AutoField' 
 
 
 

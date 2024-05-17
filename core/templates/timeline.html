@@ -17,7 +17,7 @@
     
     
     <div class="container" style="margin-top: 50px;">
-        <h4 style="text-align: center;margin-bottom: 20px;"> SHIPMENT TRACKING NO  : {{ctx.shipment.tracking_number}} </h4>
+        <h4 style="text-align: center;margin-bottom: 20px;color:#FF3E41"> SHIPMENT TRACKING NO  : <b style="color:#000001c3">{{ctx.shipment.tracking_number}} </b></h4>
         <h3 style="color:black" class="title title title-md">Shipment  Data</h3>
 
         <table class="table table-bordered">
@@ -138,8 +138,8 @@
                         <div class="roadmap-wrap mb-0">
                             {% for log in ctx.timeline %}
                             <div class="roadmap-line"></div>
-                            <div class="roadmap">
-                                <div style="width:fit-content" class="roadmap-year">{{log.date.date}}</div>
+                            <div class="roadmap" style="">
+                                <div style="width:fit-content;background-color:#FF3E41" class="roadmap-year">{{log.date.date}}</div>
                             </div>
                             <div class="roadmap roadmap-right roadmap-finished">
                                 <div class="roadmap-step">
