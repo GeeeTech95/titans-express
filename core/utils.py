@@ -19,7 +19,13 @@ def generateInvoice(shipment,return_pdf=False,request = False):
         raise ValueError("shipment must be and instance of the shopment models class")
     
     #"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe"
-    wk_path = os.path.join(settings.BASE_DIR,'core','wkhtmltopdf','bin','wkhtmltopdf.exe')
+    if settings.DEBUG :
+        wk_path = os.path.join(settings.BASE_DIR,'core','wkhtmltopdf','bin','wkhtmltopdf.exe')
+    
+    else :
+        wk_path = "/usr/bin/wkhtmltopdf"
+
+
 
     config = pdfkit.configuration(wkhtmltopdf=wk_path)
 
