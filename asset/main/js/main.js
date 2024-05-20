@@ -7,7 +7,7 @@
             if ($('#spinner').length > 0) {
                 $('#spinner').removeClass('show');
             }
-        }, 1);
+        }, 3);
     };
     spinner();
     
@@ -77,7 +77,7 @@
 
     // Header carousel
     $(".header-carousel").owlCarousel({
-        autoplay: false,
+        autoplay: true,
         smartSpeed: 1500,
         items: 1,
         dots: false,
