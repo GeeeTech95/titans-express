@@ -4,6 +4,8 @@ import pdfkit,os
 from django.conf import settings
 from django.urls import reverse
 
+from pyvirtualdisplay import Display
+
 
 def generateInvoice(shipment,return_pdf=False,request = False):
     """
@@ -19,8 +21,9 @@ def generateInvoice(shipment,return_pdf=False,request = False):
         raise ValueError("shipment must be and instance of the shopment models class")
     
     #"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe"
+    
     if settings.DEBUG :
-        wk_path = os.path.join(settings.BASE_DIR,'core','wkhtmltopdf','bin','wkhtmltopdf.exe')
+        wk_path = os.path.join(settings.BASE_DIR,'core','wkhtmltopdf')
     
     else :
         wk_path = "/usr/bin/wkhtmltopdf"
@@ -37,15 +40,16 @@ def generateInvoice(shipment,return_pdf=False,request = False):
        invoice_url = "{}{}".format(settings.SITE_URL,reverse("view-shipment-invoice",args=[shipment.tracking_number]))
 
     #return bool or pdf
-    is_generated_or_pdf = pdfkit.from_url(
-            invoice_url,
-            output_path=output_path,
-            configuration=config,
-            options={ 
-            'page-height' : "220mm",
-            "page-width" : "230mm",
-            "zoom" : 1.7
-             })   
+    with Display() :
+        is_generated_or_pdf = pdfkit.from_url(
+                invoice_url,
+                output_path=output_path,
+                configuration=config,
+                options={ 
+                'page-height' : "220mm",
+                "page-width" : "230mm",
+                "zoom" : 1.7
+                })   
     
     return is_generated_or_pdf
     
