@@ -1,0 +1,395 @@
+{% load static %}
+
+<html>
+
+<head>
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'main/css/bootstrap.min.css' %}" rel="stylesheet">
+    <style>
+        .row {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+        }
+
+        .row>div {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+    
+        }
+
+        .receipt {
+            background-position: center;
+            background-size: cover;
+            background-image: url("{% static 'main/img/favicon.png' %}");
+            background-repeat: no-repeat;
+            background-size: 450px;
+            backface-visibility: hidden;
+
+            align-items: center;
+            width: 1000px;
+            margin: 0;
+
+            padding: 0px 10px;
+            margin-top: 40px;
+
+            box-shadow: inset 0 0 0 50vw rgba(245, 243, 244, 0.733)
+        }
+
+        .heading {
+            display: flex;
+            display: -webkit-box;
+            display: -webkit-flex;
+            align-items: end;
+            justify-content: space-between;
+        }
+
+        .parties-info {
+            display: flex;
+            display: -webkit-box;
+            display: -webkit-flex;
+            align-items: end;
+            justify-content: space-between;
+            margin-top: 50px
+        }
+
+        .justify-right {
+            align-items: end;
+            justify-items: right;
+        }
+
+        h4 {
+
+            font-size: 18px;
+        }
+
+        .shipping-details {
+            border-radius: 0px;
+
+        }
+
+
+
+        tr,
+        table,
+        td {
+            border: solid;
+            border-width: 2px 1px;
+            padding: 10px 10px;
+            column-rule: solid rgb(0, 0, 0);
+            
+
+
+        }
+
+        thead {
+            padding: 10px 12px;
+        }
+
+        tr:first-child,
+        td:first-child {
+            border-radius: 0px;
+        }
+
+
+
+        .shipping-info {
+            margin-top: 50px
+        }
+
+        .td-label {
+            font-size: 13px;
+        }
+
+        .td-data {
+            display: inline-block;
+            font-size: 18px;
+            padding-top: 10px;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+
+    <div class="receipt">
+        <div class="heading">
+            <div>
+                <img style="width:auto;height: 70px;" src="{% static 'main/img/logo-light.png' %}" alt="">
+
+            </div>
+            <div style="opacity: 0;width:420px;">
+               
+
+            </div>
+            <div>
+                <h2><span>No: </span>{{shipment.invoice.invoice_number}}</h2>
+                <h5 class="mt-0">Date: {{shipment.invoice.date_created|date:"d, M, Y"}}</h5>
+            </div>
+
+        </div>
+        <h1 hidden style="font-size: 30px;font-family: 'Courier New', Courier, monospace;">Consignment Invoice</h1>
+
+        <div clas=sub-heading>
+
+        </div>
+
+        <div class="parties-info ">
+            <div>
+                <h2>Sender Info</h2>
+                <span>Name: {{shipment.sender_name}}</span><br>
+                <span>phone: {{shipment.sender_phone_number}}</span> <br>
+                <span>Address: {{shipment.sender_address}}</span>
+            </div>
+            <div style="opacity: 0;width:500px;">
+               
+
+            </div>
+            <div class="justify-right">
+                <h2>Receiver Info</h2>
+                <span>Name: {{shipment.receiver_name }}</span><br>
+                <span>phone: {{shipment.receiver_phone_number }}</span> <br>
+                <span>Address: {{shipment.receiver_address}}</span>
+
+
+            </div>
+        </div>
+
+        <div class="shipping-info" style="padding-left: 5px;">
+            <div class="row">
+                <div class="col-7">
+                    <h4>Package Details</h4>
+                    <div class="shipping-details ">
+                        <table class="border">
+
+
+                            <tbody>
+                                <tr>
+                                    <td class="">
+                                        <span class="td-label">Package name</span>
+                                        <br>
+                                        <span class="td-data">{{shipment.package_name}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="td-label">Weight</span>
+                                        <br>
+                                        <span class="td-data">{{shipment.weight}}Kg</span>
+                                    </td>
+                                    <td>
+                                        <span class="td-label">Fragility</span>
+                                        <br>
+                                        <span class="td-data">{{shipment.fragility}}</span>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="">
+                                        <span class="td-label">Tracking Number</span>
+                                        <br>
+                                        <span class="td-data">{{shipment.tracking_number}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="td-label">Attending Officer</span>
+                                        <br>
+                                        <span class="td-data">{{shipment.attending_officer}}</span>
+                                    </td>
+                                    <td>
+
+
+                                        <span class="td-data">
+                                            <img style="width:auto;height: 90px;" src="{% static 'main/img/seal.png' %}"
+                                                alt="">
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                    <h4 style="margin-top: 50px;">Shipping Details</h4>
+                    <div class="shipping-details  ">
+
+                        <table class="border">
+
+
+                            <tbody>
+                                <tr>
+                                    <td class="">
+                                        <span class="td-label">Origin</span>
+                                        <br>
+                                        <span class="td-data">{{shipment.source_country}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="td-label">Address</span>
+                                        <br>
+                                        <span class="td-data">{{shipment.source_address}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="td-label">Departure Date</span>
+                                        <br>
+                                        <span
+                                            class="td-data">{{shipment.estimated_departure_date|date:"d, M, Y"}}</span>
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td class="">
+                                        <span class="td-label">Destination</span>
+                                        <br>
+                                        <span class="td-data">{{shipment.destination_country}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="td-label">Address</span>
+                                        <br>
+                                        <span class="td-data">{{shipment.destination_address}}</span>
+                                    </td>
+                                    <td>
+                                        <span class="td-label">Expected Date Of Arrival</span>
+
+                                        <br>
+                                        <span class="td-data">{{shipment.estimated_arrival_date|date:"d, M, Y"}}</span>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+                    </div>
+
+
+
+                </div>
+                <div class="col-5">
+                    <h4>Payment</h4>
+                    <div class="shipping-details mt-4 ">
+
+                        <table class="border">
+
+                            <thead  >
+                                <th style="padding: 10px">Charge</th>
+                                <th style="padding: 10px">Amount(USD)</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="">
+                                        Basic Charges
+                                    </td>
+
+                                    <td>
+                                        <b>{{shipment.shipment_fee}}</b>
+
+
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+                                    <td class="">
+                                        Insurance Fee
+                                    </td>
+
+                                    <td>
+                                        <b>{{shipment.insurance_fee}}</b>
+
+
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="">
+                                        Tax
+                                    </td>
+
+                                    <td>
+                                        <b>{{shipment.tax_fee}}</b>
+
+
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="">
+                                        VAT
+                                    </td>
+
+                                    <td>
+                                        <b>{{shipment.vat_fee}}</b>
+
+
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+                                    <td class="">
+                                        Additional Charges
+                                    </td>
+
+                                    <td>
+                                        <b>{{shipment.additional_fee}}</b>
+
+
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="">
+                                        TOTAL
+                                    </td>
+
+                                    <td>
+                                        <b>{{shipment.total_fee}}</b>
+
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                    <div class="mt-4">
+                        <h6 style="font-weight: 400;">Payment Status
+                            <span
+                                style="font-weight: 500;;margin-left: 20px;font-size: 20px;">{{shipment.payment_status}}</span>
+                        </h6>
+                        <h6 style="font-weight: 400;">Payment Details
+                            <span
+                                style="font-weight: 500;;margin-left: 20px;font-size: 20px;">{{shipment.payment_detail}}</span>
+                        </h6>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div style="margin-top: 60px;">
+            <h5>Sender Authorization and Signature</h5>
+            <p>We agree that {{site_name}} standard apply to this cargo system and limit {{site_name}} liability.</p>
+            <span> Signature:
+
+                <img style="width:auto;height: 40px;margin-left: 20px;" src="{% static 'main/img/signature.png' %}"
+                    alt="">
+
+            </span>
+        </div>
+
+
+
+    </div>
+
+
+
+
+</body>
+
+</html>

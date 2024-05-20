@@ -11,7 +11,7 @@ urlpatterns = [
     path("blog/",blog.BlogList.as_view(),name='blog-list'),
     path("blog/<slug:slug>/",blog.BlogDetail.as_view(),name='blog-detail'),
 
-      path("test-template/",views.TestTemplate.as_view(),name = "test-template")
+    path("test-template/",views.TestTemplate.as_view(),name = "test-template")
 
 
 ]

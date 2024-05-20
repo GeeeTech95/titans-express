@@ -15,6 +15,7 @@ import random
 #from twilio.rest import Client
 from django.core.mail import EmailMultiAlternatives, SafeMIMEMultipart
 from email.mime.image import MIMEImage
+from email.mime.multipart import MIMEMultipart
 
 from core.templatetags.vocabulary import capitalize
 
@@ -94,7 +95,11 @@ class Email() :
             pass
 
 
-    def send_html_email(self,receive_email_list,template = None,subject =None,files_path_list=None,ctx=None) :
+    def send_html_email(self,receive_email_list,invoice_path=None,template = None,subject =None,attachment_files=None,ctx=None) :
+        """"
+        attachment_files would be a dictionary of key as name used in template
+        and value the file path
+        """
         error = None #for error control
         subject = subject or self.default_subject
         template = template or self.default_template
@@ -118,7 +123,13 @@ class Email() :
             logo = MIMEImage(f.read())
             logo.add_header("Content-ID","<logo.png>")
             email.attach(logo)
-            
+
+        """ #attach invoice
+        if invoice_path :
+            with open(invoice_path,"rb") as  f :
+                invoice =  MIMEMultipart(f.read())  
+                invoice.add_header("Content-ID","<invoice.pdf>")
+                email.attach(invoice)"""
     
         try :
             email.send()

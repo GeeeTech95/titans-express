@@ -4,15 +4,22 @@ from django.db.models.signals import post_save
 
 from .models import Shipment,StatusLog,TransitLog
 from core.communication import LogisticsMail
+from  core.utils import generateInvoice
 
 @receiver(post_save, sender= Shipment)
 def shipment_on_create(sender, instance, created, **kwargs):
+    """#generate invoice wheather edited or created
+    is_generated,output_path = generateInvoice(
+        shipment=instance,
+        )"""
     if  created :
         #send email that the shipment has been registered
         #create first status 
         StatusLog.objects.create(shipment = instance,status = "registered")
         mail = LogisticsMail(instance)
+       
         mail.send_shipment_created_mail()
+
         
            
   

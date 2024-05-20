@@ -219,6 +219,13 @@ os.path.join(BASE_DIR,"static")
 
 SITE_NAME = "Titan Express"
 
+
+if DEBUG : 
+    SITE_URL = "http://127.0.0.1:8000"
+else :
+    SITE_URL  = "https://www.titansexpress.com"  
+
+
 STATIC_ROOT = os.path.join(BASE_DIR,"asset")
 
 STATIC_URL = '/static/'

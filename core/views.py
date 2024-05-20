@@ -18,7 +18,7 @@ class LoginRedirect(RedirectView) :
 
 
 class TestTemplate(TemplateView) :
-    template_name = "shipment-created-mail.html"
+    template_name = "invoice.html"
 
     def get_context_data(self, **kwargs)  :
         ctx = super(TestTemplate,self).get_context_data(**kwargs)
