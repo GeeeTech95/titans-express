@@ -47,7 +47,7 @@ class CreateInvoiceView(generic.View) :
         if not  shipment_tracking_number :
             return HttpResponse("shipment with that tracking number no longer exists")       
         shipment = get_object_or_404(self.model,tracking_number = shipment_tracking_number)
-        invoice = generateInvoice(shipment,True)
+        invoice = generateInvoice(shipment,True,request=request)
         response = HttpResponse(invoice ,content_type='application/pdf')
         response['Content-Disposition'] = 'attachment; filename="invoice.pdf"'
 
