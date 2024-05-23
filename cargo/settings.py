@@ -187,7 +187,7 @@ AUTH_PASSWORD_VALIDATORS = [
 #EMAIL FOR ZOHO
 EMAIL_HOST  = "smtp.zoho.com"
 EMAIL_HOST_USER_TRANSACTION = "logistics@titansexpress.com"
-EMAIL_HOST_USER_ALERT = "logistics@titansexpress.com"
+EMAIL_HOST_USER_LOGISTICS = "logistics@titansexpress.com"
 EMAIL_HOST_USER_SUPPORT = "support@titansexpress.com"
 PASSWORD = "!@pdt7gu123!!X"
 
