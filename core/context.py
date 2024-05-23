@@ -13,8 +13,8 @@ def core(request) :
     ctx['site_name_full'] = "Titan Express"
     ctx['support_email'] = "support@titansexpress.com"
     ctx['site_email'] = "support@titansexpress.com"
-    ctx['site_phone'] = "+3594858322"
-    ctx['site_whatsapp_no'] = "+65156586566"
+    ctx['site_phone'] = "+16305279499"
+    ctx['site_whatsapp_no'] = "+16305279499"
     ctx['site_address'] = "No 23 winston road new york"
 
     epoch_time = datetime.datetime(1970, 1, 1)

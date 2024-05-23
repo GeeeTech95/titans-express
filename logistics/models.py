@@ -52,34 +52,30 @@ class Shipment(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     _estimated_arrival_date = models.DateTimeField(null=True, blank=True)
     _estimated_departure_date = models.DateTimeField(blank=True, null=True)
+    
+
+    #receipt infos
+    package_description = models.TextField()
+    issuing_officer =  models.CharField(max_length=40)
+    additional_kg = models.DecimalField(blank=True,null=True,max_digits=100,decimal_places=2)
+    destination_code =  models.CharField(max_length=40)
+    receipt_date = models.DateTimeField()
+    no_of_pieces = models.IntegerField()
+    insurance_fee = models.DecimalField(blank=True,null=True,max_digits=100,default=0.00,decimal_places=2)
+    tax_fee = models.DecimalField(blank=True,max_digits=100,decimal_places=2,default=0.00)
+    vat_fee = models.DecimalField(blank=True,max_digits=100,decimal_places=2,default=0.00)
+    additional_charges = models.DecimalField(blank=True,max_digits=100,decimal_places=2,default=0.00)
+    dispatched_date = models.DateTimeField() 
+    description_of_consignment = models.CharField(max_length=200)
+    name_of_staff_accepting_consignment =  models.CharField(max_length=40)
+    name_of_agent_delivering_consignment =  models.CharField(max_length=40)
+    
 
     @property
-    def additional_fee(self):
-        return self.shipment_fee / decimal.Decimal(10)
+    def total_fee(self) :
+        return self.shipment_fee + self.additional_charges + self.vat_fee + self.tax_fee + self.insurance_fee
 
-    @property
-    def insurance_fee(self):
-        return self.shipment_fee / decimal.Decimal(20)
 
-    @property
-    def tax_fee(self):
-        return self.shipment_fee / decimal.Decimal(20)
-    
-    @property
-    def vat_fee(self):
-        return self.shipment_fee / decimal.Decimal(20)
-    
-    @property
-    def payment_detail(self) :
-        return 7896654231
-    
-    @property
-    def total_fee(self):
-        return self.shipment_fee  + self.tax_fee + self.vat_fee + self.insurance_fee + self.additional_fee
-    
-    @property
-    def attending_officer(self):
-        return "James Sackman"
 
     @property
     def fragility(self):

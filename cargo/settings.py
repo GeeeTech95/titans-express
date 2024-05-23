@@ -221,7 +221,7 @@ SITE_NAME = "Titan Express"
 
 
 if DEBUG : 
-    SITE_URL = "http://127.0.0.1:8000"
+    SITE_URL = "http://127.0.0.4:4000"
 else :
     SITE_URL  = "https://www.titansexpress.com"  
 
