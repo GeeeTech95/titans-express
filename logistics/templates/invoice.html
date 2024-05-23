@@ -24,8 +24,8 @@
             background-image: url("{% static 'main/img/favicon.png' %}");
             background-repeat: no-repeat;
             background-size: 450px;
-            backface-visibility: hidden;
-
+            
+            
             align-items: center;
             width: 1000px;
             margin: 0;
@@ -257,7 +257,7 @@
     
 
                 <div class="margin-top:30px">
-                    <table class="border" style="margin-top: 30px;width: 500px; ">
+                    <table class="border" style="margin-top: 30px;width: 450px; ">
                         <thead style="background-color: #087e8b;height: 40px;">
                             <th >
                                 Package Name
@@ -273,7 +273,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <table class="border" style="margin-top: 30px;width: 500px;">
+                    <table class="border" style="margin-top: 30px;width: 450px;">
                         <thead style="background-color: #087e8b;height: 40px;">
                           
                             <th>
@@ -294,12 +294,12 @@
                     </table>
                 </div>
              
-                <div class="" style="padding: 0px 30px;">
+                <div class="" style="padding: 0px 0px 0px 50px;">
                    
                     
                     <div class="shipping-details ">
 
-                        <table class="border" style="height: 280px;width: 500px;">
+                        <table class="border" style="height: 300px;width: 450px;">
 
                             <thead  >
                                 <th style="color: white;padding: 10px;background-color: #087e8b;">Charge</th>
@@ -385,18 +385,21 @@
 
                         </table>
 
-                        <div style="margin-top: 30px;font-size: 16px;"> 
-                            Dispatched Date : <span style="font-size: 19px;font-weight: 700;">{{shipment.dispatched_date|date:"d-m-y"}}</span>
-                        </div>
+                      
                     </div>
+                    
                   
                 </div>
+                
         
 
         </div>
 
 
         <div style="margin-top: 30px;margin-bottom: 30px;">
+            <div style="margin-top: 30px;font-size: 16px;"> 
+                Dispatched Date : <span style="font-size: 19px;font-weight: 700;">{{shipment.dispatched_date|date:"d/m/y"}}</span>
+            </div>
             <h3>
                 Sender Authorization and Signature
             </h3>
