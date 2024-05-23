@@ -51,6 +51,9 @@ class LogisticsMail() :
   
 
 class Email() :
+    default_template = "custom-mail.html"
+
+
     def __init__(self,send_type = "support") :
 
         from django.core.mail import get_connection
@@ -58,6 +61,7 @@ class Email() :
         host = settings.EMAIL_HOST
         port = settings.EMAIL_PORT
         password = settings.EMAIL_HOST_PASSWORD
+   
 
         senders = {
             'support' : settings.EMAIL_HOST_USER_SUPPORT,
@@ -95,14 +99,14 @@ class Email() :
             pass
 
 
-    def send_html_email(self,receive_email_list,invoice_path=None,template = None,subject =None,attachment_files=None,ctx=None) :
+    def send_html_email(self,receive_email_list,template = None,subject =None,ctx=None) :
         """"
         attachment_files would be a dictionary of key as name used in template
         and value the file path
         """
         error = None #for error control
-        subject = subject or self.default_subject
-        template = template or self.default_template
+        subject = subject 
+        template = template
         ctx = ctx
         ctx['site_name'] = settings.SITE_NAME
         msg = render_to_string(template,ctx)
