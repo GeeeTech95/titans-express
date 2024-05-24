@@ -39,6 +39,7 @@ def shipment_on_status_update(sender, instance, created, **kwargs):
         #send email that the shipment has been updated
         #mail = LogisticsMail(instance.shipment)
         #mail.send_shipment_progress_mail()
+        pass
         
             
 
