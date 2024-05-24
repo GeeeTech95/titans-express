@@ -16,9 +16,9 @@ def shipment_on_create(sender, instance, created, **kwargs):
         #send email that the shipment has been registered
         #create first status 
         StatusLog.objects.create(shipment = instance,status = "registered")
-        mail = LogisticsMail(instance)
+        #mail = LogisticsMail(instance)
        
-        mail.send_shipment_created_mail()
+        #mail.send_shipment_created_mail()
 
         
            
@@ -26,9 +26,10 @@ def shipment_on_create(sender, instance, created, **kwargs):
 @receiver(post_save, sender= TransitLog)
 def shipment_on_transit_update(sender, instance, created, **kwargs):
     if  created :
+        pass
         #send email that the shipment has been updated
-        mail = LogisticsMail(instance.shipment)
-        mail.send_shipment_progress_mail()
+        #mail = LogisticsMail(instance.shipment)
+        #mail.send_shipment_progress_mail()
         
                
     
@@ -36,8 +37,8 @@ def shipment_on_transit_update(sender, instance, created, **kwargs):
 def shipment_on_status_update(sender, instance, created, **kwargs):
     if  created :
         #send email that the shipment has been updated
-        mail = LogisticsMail(instance.shipment)
-        mail.send_shipment_progress_mail()
+        #mail = LogisticsMail(instance.shipment)
+        #mail.send_shipment_progress_mail()
         
             
 

@@ -38,6 +38,8 @@ class LogisticsMail() :
             ctx = {"shipment" : self.shipment }
         )
 
+
+
     def send_shipment_created_mail(self) :
         template_name = "shipment-created-mail.html"
         self.mail.send_html_email(
