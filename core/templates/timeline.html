@@ -45,11 +45,11 @@
                 </tr>
                 <tr>
                     <td class="table-head">Expected Delivery Date</td>
-                    <td class="table-des">{{ctx.shipment.estimated_arrival_date}}</td>
+                    <td class="table-des">{{ctx.shipment.estimated_arrival_date|date:"j M Y"}}</td>
                 </tr>
                 <tr>
                     <td class="table-head">Depature Date</td>
-                    <td class="table-des">{{ctx.shipment.dispatched_date}}</td>
+                    <td class="table-des">{{ctx.shipment.dispatched_date|date:"j M Y, g:i A"}}</td>
                 </tr>
                 <tr>
                     <td class="table-head">Shipping Fee</td>
