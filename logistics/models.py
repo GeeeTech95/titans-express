@@ -277,7 +277,8 @@ class TransitLog(models.Model):
     StatusChoices = (
         ("arrived", "arrived"),
         ("processing", "processing"),
-        ("dispatched", "dispatched")
+        ("dispatched", "dispatched"),
+         ("on hold", "on hold")
 
     )
     shipment = models.ForeignKey(
@@ -290,6 +291,9 @@ class TransitLog(models.Model):
     def __str__(self):
         if self.status == "arrived":
             return "shipment {}, arrived at station-{} on {}".format(self.shipment, self.station, self.date.strftime("%d %b, %Y. %I:%M %p"))
+        
+        elif self.status == "on hold":
+            return "shipment {}, has been witheld at station-{} on {}".format(self.shipment, self.station, self.date.strftime("%d %b, %Y. %I:%M %p"))
 
         elif self.status == "proccessing":
             return "shipment {}, processed at station-{} on {}".format(self.shipment, self.station, self.date.strftime("%d %b, %Y. %I:%M %p"))
@@ -309,6 +313,9 @@ class TransitLog(models.Model):
 
         elif self.status == "processing":
             return "Package is being processed at {} terminal".format(self.station)
+        
+        elif self.status == "on hold":
+            return "Package is being witheld at {} terminal".format(self.station)
 
         else:
             return "Package has left {}, and now been dispatched to the next terminal".format(self.station)
