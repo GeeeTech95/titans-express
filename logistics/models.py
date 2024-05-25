@@ -230,7 +230,8 @@ class StatusLog(models.Model):
         ("registered", "registered"),
         ("received", "received"),
         ("processing", "processing"),
-        ("in transit", "in transit")
+        ("in transit", "in transit"),
+          ("on hold", "on hold")
 
     )
 
@@ -260,13 +261,16 @@ class StatusLog(models.Model):
     @property
     def status_verbose(self):
         if self.status == "registered":
-            return "Package has just been registered, but not yet received at initial terminal".format(self.initial_terminal_name)
+            return "Package has just been registered, awaiting processing.".format(self.initial_terminal_name)
 
         elif self.status == "received":
-            return "Package has been received at {} terminal, awaiting processing.".format(self.initial_terminal_name)
+            return "Package has been received at {} terminal, awaiting registration".format(self.initial_terminal_name)
 
         elif self.status == "processing":
             return "Package is been processed at {} terminal".format(self.initial_terminal_name)
+
+        elif self.status == "on hold":
+            return "Package is been Witheld at {} terminal".format(self.initial_terminal_name)
 
         else:
             return "Package has left {} terminal and is now in transit".format(self.initial_terminal_name)

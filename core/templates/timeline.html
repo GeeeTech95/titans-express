@@ -49,7 +49,11 @@
                 </tr>
                 <tr>
                     <td class="table-head">Current Status</td>
+                  {% if ctx.shipment.last_status_log.status == "on hold" %}
+                    <td class="table-des" style="color: red;font-weight: 700;font-size: 17px;text-transform: uppercase;">{{ctx.shipment.last_status_log.status}}</td>
+                    {% else %}
                     <td class="table-des">{{ctx.shipment.last_status_log.status}}</td>
+                    {% endif %}
                 </tr>
                 <tr>
                     <td class="table-head">Payment Status</td>
