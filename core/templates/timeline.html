@@ -44,9 +44,18 @@
                     <td class="table-des">{{ctx.shipment.registration_date}}</td>
                 </tr>
                 <tr>
+                    <td class="table-head">Expected Delivery Date</td>
+                    <td class="table-des">${{ctx.shipment.estimated_arrival_date}}</td>
+                </tr>
+                <tr>
+                    <td class="table-head">Depature Date</td>
+                    <td class="table-des">${{ctx.shipment.dispatched_date}}</td>
+                </tr>
+                <tr>
                     <td class="table-head">Shipping Fee</td>
                     <td class="table-des">${{ctx.shipment.shipment_fee}}</td>
                 </tr>
+               
                 <tr>
                     <td class="table-head">Current Status</td>
                   {% if ctx.shipment.last_status_log.status == "on hold" %}
