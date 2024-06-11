@@ -15,7 +15,7 @@
         .row>div {
             -webkit-box-flex: 1;
             -webkit-flex: 1;
-    
+
         }
 
         .receipt {
@@ -24,8 +24,8 @@
             background-image: url("{% static 'main/img/favicon.png' %}");
             background-repeat: no-repeat;
             background-size: 450px;
-            
-            
+
+
             align-items: center;
             width: 1000px;
             margin: 0;
@@ -77,7 +77,7 @@
             border-width: 2px 1px;
             padding: 5px 7px;
             column-rule: solid rgb(0, 0, 0);
-            
+
 
 
         }
@@ -97,7 +97,7 @@
             border-radius: 0px;
         }
 
-        td div:first-child{
+        td div:first-child {
             margin-top: 10px;
         }
 
@@ -113,7 +113,7 @@
 
         .shipping-info {
             margin-top: 50px;
-            margin-left :15px
+            margin-left: 15px
         }
 
         .td-label {
@@ -141,12 +141,14 @@
             </div>
             <div style="width:50px ;"></div>
             <div style="width:420px;border-radius: 10px;box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">
-               <div style="font-size : 20px; padding-top: 15px; text-align: center; background-color: #ff3e41;border-radius: 10px  10px 0 0;height: 50px;color: white;" >
+                <div
+                    style="font-size : 20px; padding-top: 15px; text-align: center; background-color: #ff3e41;border-radius: 10px  10px 0 0;height: 50px;color: white;">
                     TITANS EXPRESS LOGISTICS
-               </div>
-               <div style="background-color: #087e8b;font-size: 13px; padding: 15px 10px 0px 10px; text-align: center;border-radius: 0 0 10px 10px;height: 50px;color: white;" >
-                 Contact Support: {{site_phone}}, Email: {{site_email}}
-               </div>
+                </div>
+                <div
+                    style="background-color: #087e8b;font-size: 13px; padding: 15px 10px 0px 10px; text-align: center;border-radius: 0 0 10px 10px;height: 50px;color: white;">
+                    Contact Support: {{site_phone}}, Email: {{site_email}}
+                </div>
 
             </div>
             <div style="width:50px ;"></div>
@@ -156,26 +158,26 @@
             </div>
 
         </div>
-      
-      
+
+
         <table class="border" style="margin-top: 30px;width: 100%;">
             <thead style="height: 40px;">
-                <th >
+                <th>
                     Date
                 </th>
-                <th >
+                <th>
                     Issuing Officer
                 </th>
-                <th >
+                <th>
                     Destination Code
                 </th>
                 <th>
                     Account Number
                 </th>
-                <th >
+                <th>
                     NO. OF PIECES
                 </th>
-                <th >
+                <th>
                     Gross Weight
                 </th>
 
@@ -184,234 +186,233 @@
             <tbody>
                 <tr style="height: 50px;">
                     <td class="">
-                       {{shipment.receipt_date|date:"d/m/Y"}}
+                        {{shipment.receipt_date|date:"d/m/Y"}}
                     </td>
                     <td class="">
                         {{shipment.issuing_officer}}
-                     </td>
-                     <td class="">
+                    </td>
+                    <td class="">
                         {{shipment.destination_code}}
-                     </td>
-                     <td class="">
+                    </td>
+                    <td class="">
                         CASH
-                     </td>
-                     <td class="">
+                    </td>
+                    <td class="">
                         {{shipment.no_of_pieces}}
-                     </td>
-                     <td class="">
+                    </td>
+                    <td class="">
                         {{shipment.weight}}Kg
-                     </td>
+                    </td>
                 </tr>
             </tbody>
         </table>
 
 
         <table class="border" style="margin-top: 30px;width: 100%">
-            <thead >
-                <th >
+            <thead>
+                <th>
                     Sender Info
                 </th>
-                <th >
+                <th>
                     Receiver Info
                 </th>
-                <th >
+                <th>
                     Staff Accepting Co.
                 </th>
-                <th >
-                  Agent Delivering Co.
+                <th>
+                    Agent Delivering Co.
                 </th>
             </thead>
             <tbody>
                 <tr style="height: 50px;">
                     <td class="">
                         <div>Name: {{shipment.sender_name}}</div>
-                        <!--div>phone: {{shipment.sender_phone_number}}</div--> 
+                        <!--div>phone: {{shipment.sender_phone_number}}</div-->
                         <div>Address: {{shipment.sender_address}}</div>
                     </td>
                     <td class="">
-                        <div>Name: <br>{{shipment.receiver_name }}</div><br></div>
-                        <div>phone: {{shipment.receiver_phone_number }}</div> 
-                        <div>Address: {{shipment.receiver_address}}</div>
-                    </td>
-                    <td class="">
-                        <div>Name: <b>{{shipment.name_of_staff_accepting_consignment }}</b></div>
-                        <div>Signature: 
-                             <img style="width:auto;height: 70px;" src="{% static 'main/img/sign-c.png' %}"
-                            alt=""></div> 
-                       
-                    </td>
-                    <td class="">
-                        <div>Name: <b>{{shipment.name_of_agent_delivering_consignment }}</b></div>
-                        <div>Signature: 
-                            <img style="width:auto;height: 70px;" src="{% static 'main/img/sign-b.png' %}"
-                            alt="">
-                        </div> 
-                       
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                        <div>Name: <br>{{shipment.receiver_name }}</div><br>
+    </div>
+    <div>phone: {{shipment.receiver_phone_number }}</div>
+    <div>Address: {{shipment.receiver_address}}</div>
+    </td>
+    <td class="">
+        <div>Name: <b>{{shipment.name_of_staff_accepting_consignment }}</b></div>
+        <div>Signature:
+            <img style="width:auto;height: 70px;" src="{% static 'main/img/sign-c.png' %}" alt=""></div>
 
-       
-        <div class="heading" style="padding-top: 30px;">
-    
-
-                <div >
-                    <table class="border" style="margin-top: 30px;width: 450px; ">
-                        <thead style="background-color: #087e8b;height: 40px;">
-                            <th >
-                                Package Name
-                            </th>
-                    
-                        </thead>
-                        <tbody>
-                            <tr style="height: 50px;">
-                                <td class="">
-                                    {{shipment.package_name}}
-                                </td>
-                            
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="border" style="margin-top: 30px;width: 450px;">
-                        <thead style="background-color: #087e8b;height: 40px;">
-                          
-                            <th>
-                                Package Descipion
-                            </th>
-                        </thead>
-                        <tbody>
-                            <tr style="height: 50px;">
-                             
-                                <td class="" style="height: 130px;padding-top: 10px;">
-                                    {{shipment.package_description }}
-                                    <div><b>Approval</b>: 
-                                        <img style="width:auto;height: 90px;" src="{% static 'main/img/seal.png' %}"
-                                       alt=""></div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-             
-                <div class="" style="padding: 0px 0px 0px 50px;">
-                   
-                    
-                    <div class="shipping-details ">
-
-                        <table class="border" style="height: 300px;width: 450px;margin-top: 30px;">
-
-                            <thead  >
-                                <th style="color: white;padding: 10px;background-color: #087e8b;">Charge</th>
-                                <th style="color: white;padding: 10px;background-color: #087e8b;">Amount(USD)</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="">
-                                        Basic Charges
-                                    </td>
-
-                                    <td>
-                                        <b>{{shipment.shipment_fee}}</b>
-
-
-                                    </td>
-
-                                </tr>
-
-                                <tr>
-                                    <td class="">
-                                        Insurance Fee
-                                    </td>
-
-                                    <td>
-                                        <b>{{shipment.insurance_fee}}</b>
-
-
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td class="">
-                                        Tax
-                                    </td>
-
-                                    <td>
-                                        <b>{{shipment.tax_fee}}</b>
-
-
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td class="">
-                                        VAT
-                                    </td>
-
-                                    <td>
-                                        <b>{{shipment.vat_fee}}</b>
-
-
-                                    </td>
-
-                                </tr>
-
-                                <tr>
-                                    <td class="">
-                                        Additional Charges
-                                    </td>
-
-                                    <td>
-                                        <b>{{shipment.additional_charges}}</b>
-
-
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td class="">
-                                        TOTAL
-                                    </td>
-
-                                    <td>
-                                        <b>{{shipment.total_fee}}</b>
-
-
-                                    </td>
-
-                                </tr>
-
-                            </tbody>
-
-                        </table>
-
-                      
-                    </div>
-                    
-                  
-                </div>
-                
-        
-
+    </td>
+    <td class="">
+        <div>Name: <b>{{shipment.name_of_agent_delivering_consignment }}</b></div>
+        <div>Signature:
+            <img style="width:auto;height: 70px;" src="{% static 'main/img/sign-b.png' %}" alt="">
         </div>
 
+    </td>
+    </tr>
+    </tbody>
+    </table>
 
-        <div style="margin-top: 30px;margin-bottom: 30px;">
-            <div style="margin-top: 30px;font-size: 16px;"> 
-                Dispatched Date : <span style="font-size: 19px;font-weight: 700;">{{shipment.dispatched_date|date:"d/m/y"}}</span>
+
+    <div class="heading" style="padding-top: 30px;">
+
+
+        <div>
+            <table class="border" style="margin-top: 30px;width: 450px; ">
+                <thead style="background-color: #087e8b;height: 40px;">
+                    <th>
+                        Package Name
+                    </th>
+
+                </thead>
+                <tbody>
+                    <tr style="height: 50px;">
+                        <td class="">
+                            {{shipment.package_name}}
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+            <table class="border" style="margin-top: 30px;width: 450px;">
+                <thead style="background-color: #087e8b;height: 40px;">
+
+                    <th>
+                        Package Descripion
+                    </th>
+                </thead>
+                <tbody>
+                    <tr style="height: 50px;">
+
+                        <td class="" style="height: 130px;padding-top: 10px;">
+                            {{shipment.package_description }}
+                            <div><b>Approval</b>:
+                                <img style="width:auto;height: 90px;" src="{% static 'main/img/seal.png' %}" alt="">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="" style="padding: 0px 0px 0px 50px;">
+
+
+            <div class="shipping-details ">
+
+                <table class="border" style="height: 300px;width: 450px;margin-top: 30px;">
+
+                    <thead>
+                        <th style="color: white;padding: 10px;background-color: #087e8b;">Charge</th>
+                        <th style="color: white;padding: 10px;background-color: #087e8b;">Amount(USD)</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="">
+                                Basic Charges
+                            </td>
+
+                            <td>
+                                <b>{{shipment.shipment_fee}}</b>
+
+
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td class="">
+                                Insurance Fee
+                            </td>
+
+                            <td>
+                                <b>{{shipment.insurance_fee}}</b>
+
+
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td class="">
+                                Tax
+                            </td>
+
+                            <td>
+                                <b>{{shipment.tax_fee}}</b>
+
+
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td class="">
+                                VAT
+                            </td>
+
+                            <td>
+                                <b>{{shipment.vat_fee}}</b>
+
+
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td class="">
+                                Additional Charges
+                            </td>
+
+                            <td>
+                                <b>{{shipment.additional_charges}}</b>
+
+
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td class="">
+                                TOTAL
+                            </td>
+
+                            <td>
+                                <b>{{shipment.total_fee}}</b>
+
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+
             </div>
-            <h3>
-                Sender Authorization and Signature
-            </h3>
-            <p>We agree that {{site_name}} standard apply to this cargo system and limit {{site_name}} liability.</p>
-            <span> Signature:
 
-                <img style="width:auto;height: 70px;margin-left: 20px;" src="{% static 'main/img/sign-a.png' %}"
-                    alt=""><br>
-                   
 
-            </span>
         </div>
+
+
+
+    </div>
+
+
+    <div style="margin-top: 30px;margin-bottom: 30px;">
+        <div style="margin-top: 30px;font-size: 16px;">
+            Dispatched Date : <span
+                style="font-size: 19px;font-weight: 700;">{{shipment.dispatched_date|date:"d/m/y"}}</span>
+        </div>
+        <h3>
+            Sender Authorization and Signature
+        </h3>
+        <p>We agree that {{site_name}} standard apply to this cargo system and limit {{site_name}} liability.</p>
+        <span> Signature:
+
+            <img style="width:auto;height: 70px;margin-left: 20px;" src="{% static 'main/img/sign-a.png' %}" alt=""><br>
+
+
+        </span>
+    </div>
 
 
 
