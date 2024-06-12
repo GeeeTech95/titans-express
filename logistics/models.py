@@ -52,30 +52,37 @@ class Shipment(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     _estimated_arrival_date = models.DateTimeField(null=True, blank=True)
     _estimated_departure_date = models.DateTimeField(blank=True, null=True)
-    
 
-    #receipt infos
+    # receipt infos
     package_description = models.TextField()
-    issuing_officer =  models.CharField(max_length=40)
-    additional_kg = models.DecimalField(blank=True,null=True,max_digits=100,decimal_places=2)
-    destination_code =  models.CharField(max_length=40)
+    issuing_officer = models.CharField(max_length=40)
+    additional_kg = models.DecimalField(
+        blank=True, null=True, max_digits=100, decimal_places=2)
+    destination_code = models.CharField(max_length=40)
     receipt_date = models.DateTimeField()
     no_of_pieces = models.IntegerField()
-    insurance_fee = models.DecimalField(max_digits=100,default=0.00,decimal_places=2)
-    tax_fee = models.DecimalField(max_digits=100,decimal_places=2,default=0.00)
-    vat_fee = models.DecimalField(max_digits=100,decimal_places=2,default=0.00)
-    additional_charges = models.DecimalField(max_digits=100,decimal_places=2,default=0.00)
-    dispatched_date = models.DateTimeField() 
+    insurance_fee = models.DecimalField(
+        max_digits=100, default=0.00, decimal_places=2)
+    tax_fee = models.DecimalField(
+        max_digits=100, decimal_places=2, default=0.00)
+    vat_fee = models.DecimalField(
+        max_digits=100, decimal_places=2, default=0.00)
+    additional_charges = models.DecimalField(
+        max_digits=100, decimal_places=2, default=0.00)
+    dispatched_date = models.DateTimeField()
     description_of_consignment = models.CharField(max_length=200)
-    name_of_staff_accepting_consignment =  models.CharField(max_length=40)
-    name_of_agent_delivering_consignment =  models.CharField(max_length=40)
-    
+    name_of_staff_accepting_consignment = models.CharField(max_length=40)
+    name_of_agent_delivering_consignment = models.CharField(max_length=40)
 
     @property
-    def total_fee(self) :
+    def registration_date(self):
+        date = self.status_logs.filter(status="registered").first().date
+        return date
+
+
+    @property
+    def total_fee(self):
         return self.shipment_fee + self.additional_charges + self.vat_fee + self.tax_fee + self.insurance_fee
-
-
 
     @property
     def fragility(self):
@@ -147,13 +154,7 @@ class Shipment(models.Model):
         else:
             return "NOT PAID"
 
-    @property
-    def registration_date(self):
-        try:
-            return self.status_logs.filter(status="registered").first().date
-        except:
-            return
-
+ 
     @property
     def is_in_transit(self):
         if self.last_status_log.status == "in transit":
@@ -231,7 +232,7 @@ class StatusLog(models.Model):
         ("received", "received"),
         ("processing", "processing"),
         ("in transit", "in transit"),
-          ("on hold", "on hold")
+        ("on hold", "on hold")
 
     )
 
@@ -282,7 +283,7 @@ class TransitLog(models.Model):
         ("arrived", "arrived"),
         ("processing", "processing"),
         ("dispatched", "dispatched"),
-         ("on hold", "on hold")
+        ("on hold", "on hold")
 
     )
     shipment = models.ForeignKey(
@@ -295,7 +296,7 @@ class TransitLog(models.Model):
     def __str__(self):
         if self.status == "arrived":
             return "shipment {}, arrived at station-{} on {}".format(self.shipment, self.station, self.date.strftime("%d %b, %Y. %I:%M %p"))
-        
+
         elif self.status == "on hold":
             return "shipment {}, has been witheld at station-{} on {}".format(self.shipment, self.station, self.date.strftime("%d %b, %Y. %I:%M %p"))
 
@@ -317,7 +318,7 @@ class TransitLog(models.Model):
 
         elif self.status == "processing":
             return "Package is being processed at {} terminal".format(self.station)
-        
+
         elif self.status == "on hold":
             return "Package is being witheld at {} terminal".format(self.station)
 
@@ -337,7 +338,6 @@ class Invoice(models.Model):
     shipment = models.OneToOneField(
         Shipment, on_delete=models.CASCADE, related_name="invoice")
     date_created = models.DateTimeField(auto_now_add=True)
-
 
     def __str__(self):
         return "{}-{}".format(self.shipment, self.invoice_number)

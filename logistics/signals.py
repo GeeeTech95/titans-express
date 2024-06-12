@@ -16,6 +16,7 @@ def shipment_on_create(sender, instance, created, **kwargs):
         #send email that the shipment has been registered
         #create first status 
         StatusLog.objects.create(shipment = instance,status = "received")
+        StatusLog.objects.create(shipment = instance,status = "registered")
         #mail = LogisticsMail(instance)
        
         #mail.send_shipment_created_mail()
