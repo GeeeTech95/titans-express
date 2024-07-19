@@ -163,7 +163,7 @@ if DEBUG :
 else :
     # Replace the SQLite DATABASES configuration with PostgreSQL:
     DATABASES = {
-    'default': dj_database_url.config(default='postgres://localhost:5432/mydatabase')
+   'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
 }
 
 
