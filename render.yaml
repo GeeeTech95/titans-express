@@ -7,7 +7,8 @@ services:
     buildCommand: "./build.sh"
     startCommand: "python -m gunicorn cargo.asgi:application -k uvicorn.workers.UvicornWorker"
     envVars:
-      
+      - key: DJANGO_SETTINGS_MODULE
+        value: cargo.settings
       - key: SECRET_KEY
         generateValue: true
       - key: WEB_CONCURRENCY
@@ -15,7 +16,7 @@ services:
 
       - key: DATABASE_URL
 
-        value: postgresql://arcticxpress:Wdbtdpe51sbQsroUeLrTFgvVOk3Qe5O1@dpg-cqcne9tumphs73fhfmeg-a/arcticxpress:5432/titansexpress
+        value: postgresql://arcticxpress:Wdbtdpe51sbQsroUeLrTFgvVOk3Qe5O1@dpg-cqcne9tumphs73fhfmeg-a:5432/titansexpress
         
 
 
