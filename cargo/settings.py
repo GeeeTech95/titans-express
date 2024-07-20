@@ -240,5 +240,5 @@ STATIC_URL = '/static/'
 
 
 
-PDFKIT_CONFIG =  pdfkit.configuration(wkhtmltopdf="") #pdfkit.configuration(wkhtmltopdf=os.environ.get('WKHTMLTOPDF_CMD', '/usr/local/bin/wkhtmltopdf'))
+PDFKIT_CONFIG = pdfkit.configuration(wkhtmltopdf=os.environ.get('WKHTMLTOPDF_CMD', '/usr/local/bin/wkhtmltopdf'))
 
