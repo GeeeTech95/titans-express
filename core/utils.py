@@ -29,11 +29,13 @@ def generateInvoice(shipment, return_pdf=False, request=False):
     if settings.DEBUG:
         wk_path = "C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe"
         # os.path.join(settings.BASE_DIR,'core','wkhtmltopdf')
-
+        config = pdfkit.configuration(wkhtmltopdf=wk_path)
+        
     else:
-        wk_path = "/usr/bin/wkhtmltopdf"
+        #wk_path = "/usr/bin/wkhtmltopdf"
+        config = settings.PDFKIT_CONFIG
 
-    config = pdfkit.configuration(wkhtmltopdf=wk_path)
+   
 
     # create invoice
     Invoice.objects.get_or_create(shipment=shipment)

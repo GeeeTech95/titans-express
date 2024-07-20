@@ -1,6 +1,6 @@
 import dj_database_url
 import os
-
+import pdfkit
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -239,4 +239,6 @@ STATIC_URL = '/static/'
  
 
 
+
+PDFKIT_CONFIG = pdfkit.configuration(wkhtmltopdf=os.environ.get('WKHTMLTOPDF_CMD', '/usr/local/bin/wkhtmltopdf'))
 
