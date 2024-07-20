@@ -1,40 +1,26 @@
-[[source]]
-url = "https://pypi.org/simple"
-verify_ssl = true
-name = "pypi"
 
-[packages]
-appdirs = "==1.4.4"
-asgiref = "==3.2.7"
-astroid = "==2.3.3"
-certifi = "==2020.4.5.1"
-cffi = "==1.14.3"
-colorama = "==0.4.3"
-cryptography = "==3.2"
-distlib = "==0.3.0"
-django = "==3.0.5"
-filelock = "==3.0.12"
-isort = "==4.3.21"
-lazy-object-proxy = "==1.4.3"
-mccabe = "==0.6.1"
-mpmath = "==1.1.0"
-numpy = "==1.18.4"
-pipenv = "==2020.11.15"
-pycparser = "==2.20"
-pylint = "==2.4.4"
-pytz = "==2020.1"
-six = "==1.14.0"
-sqlparse = "==0.3.1"
-sympy = "==1.5.1"
-virtualenv = "==20.0.21"
-virtualenv-clone = "==0.5.4"
-wave = "==0.0.2"
-wrapt = "==1.11.2"
-django-crispy-forms = "*"
-whitenoise = "*"
-gunicorn = "*"
 
-[dev-packages]
+#!/bin/bash
 
-[requires]
-python_version = "3.8"
+# Define the version of wkhtmltopdf you want to download
+WKHTMLTOPDF_VERSION=0.12.6
+
+# Create a directory for wkhtmltopdf
+mkdir -p ~/wkhtmltopdf
+
+# Download the precompiled binary
+wget https://github.com/wkhtmltopdf/packaging/releases/download/${WKHTMLTOPDF_VERSION}-1/wkhtmltox_${WKHTMLTOPDF_VERSION}-1.bionic_amd64.deb -P ~/wkhtmltopdf
+
+# Extract the contents of the .deb package
+dpkg-deb -x ~/wkhtmltopdf/wkhtmltox_${WKHTMLTOPDF_VERSION}-1.bionic_amd64.deb ~/wkhtmltopdf
+
+# Set the WKHTMLTOPDF_CMD environment variable to the path of the binary
+export WKHTMLTOPDF_CMD=~/wkhtmltopdf/usr/local/bin/wkhtmltopdf
+
+# Add the binary path to your PATH
+export PATH=$PATH:~/wkhtmltopdf/usr/local/bin
+
+# Verify the installation
+wkhtmltopdf --version
+
+

@@ -15,6 +15,7 @@ SECRET_KEY = '24q_*&tn+5k_*6h6$nsccghwwb#8b%v4i)1h(wd08_02_-(czt'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+
 ALLOWED_HOSTS = ['*']
 
 LOGGING = {
@@ -240,5 +241,5 @@ STATIC_URL = '/static/'
 
 
 
-PDFKIT_CONFIG = pdfkit.configuration(wkhtmltopdf=os.environ.get('WKHTMLTOPDF_CMD', '/usr/local/bin/wkhtmltopdf'))
+#PDFKIT_CONFIG = pdfkit.configuration(wkhtmltopdf=os.environ.get('WKHTMLTOPDF_CMD', '/usr/local/bin/wkhtmltopdf'))
 

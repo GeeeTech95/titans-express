@@ -30,10 +30,10 @@ def generateInvoice(shipment, return_pdf=False, request=False):
         wk_path = "C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe"
         # os.path.join(settings.BASE_DIR,'core','wkhtmltopdf')
         config = pdfkit.configuration(wkhtmltopdf=wk_path)
-        
+
     else:
-        #wk_path = "/usr/bin/wkhtmltopdf"
-        config = settings.PDFKIT_CONFIG
+        wk_path = "/usr/bin/wkhtmltopdf"
+        config = pdfkit.configuration(wkhtmltopdf=wk_path)
 
    
 
@@ -47,6 +47,7 @@ def generateInvoice(shipment, return_pdf=False, request=False):
             "view-shipment-invoice", args=[shipment.tracking_number]))
 
     # return bool or pdf
+    #invoice_url = "https://www.titansexpress.com/logistics/invoices/09322234/view-invoice/"
     with Display() :
         is_generated_or_pdf = pdfkit.from_url(
             invoice_url,
