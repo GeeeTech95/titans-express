@@ -1,7 +1,7 @@
 
 services:
   - type: web
-    plan: starter
+    plan: free
     name: titansexpress
     runtime: python
     buildCommand: "./build.sh"
