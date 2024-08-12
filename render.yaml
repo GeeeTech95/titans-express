@@ -16,7 +16,7 @@ services:
 
       - key: DATABASE_URL
 
-        value: postgresql://arcticxpress:Wdbtdpe51sbQsroUeLrTFgvVOk3Qe5O1@dpg-cqcne9tumphs73fhfmeg-a:5432/titansexpress
+        value: postgresql://arcticxpress:Wdbtdpe51sbQsroUeLrTFgvVOk3Qe5O1@dpg-cqcne9tumphs73fhfmeg-a.oregon-postgres.render.com/titansexpress
         
 
 
